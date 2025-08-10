@@ -257,6 +257,9 @@
             box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
             z-index: 1000;
             display: none;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: all 0.3s ease;
         }
         
         @media (max-width: 768px) {
@@ -274,7 +277,7 @@
             }
             
             .sticky-cta {
-                display: block;
+                display: none;
             }
             
             .trust-badges {
@@ -369,8 +372,16 @@
             const stickyBtn = document.querySelector('.sticky-cta');
             if (window.scrollY > 800) {
                 stickyBtn.style.display = 'block';
+                stickyBtn.style.opacity = '1';
+                stickyBtn.style.transform = 'translateY(0)';
             } else {
-                stickyBtn.style.display = 'none';
+                stickyBtn.style.opacity = '0';
+                stickyBtn.style.transform = 'translateY(100%)';
+                setTimeout(() => {
+                    if (window.scrollY <= 800) {
+                        stickyBtn.style.display = 'none';
+                    }
+                }, 300);
             }
         });
     </script>
