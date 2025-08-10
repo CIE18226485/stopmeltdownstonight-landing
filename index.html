@@ -5,34 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7-Day Preschooler Behavior Reset - Stop Meltdowns Fast</title>
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMJ1V9W8BM"></script>
+    <!-- Meta Pixel Code -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ZMJ1V9W8BM');
-      
-      // Enhanced tracking functions
-      function trackCTAClick(buttonLocation) {
-        gtag('event', 'purchase_intent', {
-          'event_category': 'engagement',
-          'event_label': buttonLocation,
-          'value': 7
-        });
-      }
-      
-      // Track scroll depth
-      let scrollTracked = false;
-      window.addEventListener('scroll', function() {
-        if (!scrollTracked && window.scrollY > document.body.scrollHeight * 0.75) {
-          gtag('event', 'scroll_75_percent', {
-            'event_category': 'engagement'
-          });
-          scrollTracked = true;
-        }
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1293754655481892');
+    fbq('track', 'PageView');
+
+    // Enhanced tracking functions for Meta Pixel
+    function trackCTAClick(buttonLocation) {
+      fbq('track', 'InitiateCheckout', {
+        content_name: '7-Day Preschooler Behavior Reset',
+        content_category: 'Digital Guide',
+        value: 7.00,
+        currency: 'GBP'
       });
+    }
+
+    // Track scroll depth
+    let scrollTracked = false;
+    window.addEventListener('scroll', function() {
+      if (!scrollTracked && window.scrollY > document.body.scrollHeight * 0.75) {
+        fbq('track', 'ViewContent', {
+          content_name: '7-Day Preschooler Behavior Reset',
+          content_type: 'product'
+        });
+        scrollTracked = true;
+      }
+    });
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1293754655481892&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     
     <style>
         * {
