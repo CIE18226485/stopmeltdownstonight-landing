@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Day Preschooler Behavior Reset - Stop Meltdowns Fast</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #FFF8DC 0%, #F0F8FF 100%);
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+        
+        .hero {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .headline {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #D2691E;
+            margin-bottom: 15px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .subheadline {
+            font-size: 1.3rem;
+            color: #228B22;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .price-badge {
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            color: #8B4513;
+            font-size: 1.4rem;
+            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 15px 0;
+            border: 3px solid #FF8C00;
+            box-shadow: 0 4px 15px rgba(255,165,0,0.3);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .hero-image {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: linear-gradient(135deg, #FFE4B5, #F0E68C);
+            border: 3px solid #DDD;
+            border-radius: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .benefits {
+            background: linear-gradient(135deg, #F0FFF0, #E6FFE6);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid #90EE90;
+        }
+        
+        .benefits h3 {
+            font-size: 1.4rem;
+            color: #228B22;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+        
+        .benefit-item::before {
+            content: '✅';
+            margin-right: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+        
+        .urgency {
+            background: linear-gradient(135deg, #FFE4E1, #FFF0F5);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 25px 0;
+            border: 2px solid #FFB6C1;
+        }
+        
+        .urgency-text {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #DC143C;
+        }
+        
+        .cta-button {
+            background: linear-gradient(45deg, #32CD32, #228B22);
+            color: white;
+            padding: 18px 35px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 100%;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(50,205,50,0.3);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .cta-button:hover {
+            background: linear-gradient(45deg, #228B22, #32CD32);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(50,205,50,0.4);
+        }
+        
+        .testimonials {
+            margin: 30px 0;
+        }
+        
+        .testimonials h3 {
+            font-size: 1.3rem;
+            color: #D2691E;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .testimonial {
+            background: #FFFAF0;
+            padding: 15px;
+            border-left: 4px solid #FFD700;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #D2691E;
+            margin-top: 8px;
+            font-style: normal;
+        }
+        
+        .trust-badges {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .trust-badge {
+            width: 80px;
+            height: 60px;
+            background: #F5F5F5;
+            border: 2px solid #DDD;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 1.8rem;
+            }
+            
+            .subheadline {
+                font-size: 1.1rem;
+            }
+            
+            .container {
+                padding: 15px;
+                margin-bottom: 80px;
+            }
+            
+            .sticky-cta {
+                display: block;
+            }
+            
+            .trust-badges {
+                justify-content: center;
+            }
+            
+            .trust-badge {
+                width: 70px;
+                height: 50px;
+                font-size: 0.7rem;
+            }
+        }
+        
+        .guarantee {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1 class="headline">Exhausted by Daily Meltdowns, Backtalk & Power Struggles?</h1>
+            <p class="subheadline">Transform Your Preschooler's Behavior in Just 7 Days</p>
+            <div class="price-badge">Only £7 - Instant Download</div>
+            <div class="hero-image">
+                Before/After Cartoon Image<br>
+                (Placeholder - 400x300px)
+            </div>
+        </div>
+
+        <div class="benefits">
+            <h3>What You'll Get Inside This 7-Day Reset Guide:</h3>
+            <div class="benefit-item">Day-by-day action plan to stop meltdowns before they start</div>
+            <div class="benefit-item">3 magic phrases that end backtalk instantly (without yelling)</div>
+            <div class="benefit-item">The "2-minute reset" technique for when things go wrong</div>
+            <div class="benefit-item">Simple bedtime routine that eliminates bedtime battles</div>
+            <div class="benefit-item">Printable behavior charts your child will actually want to use</div>
+            <div class="benefit-item">Emergency tactics for public meltdowns that work every time</div>
+        </div>
+
+        <div class="urgency">
+            <p class="urgency-text">🚨 Start Tonight - Instant Download After Purchase</p>
+        </div>
+
+        <a href="#purchase" class="cta-button">📥 Download Now – Only £7</a>
+
+        <div class="testimonials">
+            <h3>What Other Parents Are Saying:</h3>
+            <div class="testimonial">
+                "Day 3 and the tantrums have already stopped! I wish I'd found this sooner."
+                <div class="testimonial-author">— Sarah M., Mum of 4-year-old</div>
+            </div>
+            <div class="testimonial">
+                "Finally, a method that actually works without making me feel like a terrible parent."
+                <div class="testimonial-author">— James T., Dad of twin 3-year-olds</div>
+            </div>
+            <div class="testimonial">
+                "The bedtime routine alone was worth every penny. We actually have our evenings back!"
+                <div class="testimonial-author">— Emma K., Mum of 5-year-old</div>
+            </div>
+        </div>
+
+        <div class="trust-badges">
+            <div class="trust-badge">Secure<br>Payment</div>
+            <div class="trust-badge">Instant<br>Access</div>
+            <div class="trust-badge">Money Back<br>Guarantee</div>
+        </div>
+
+        <a href="#purchase" class="cta-button">📥 Get Your 7-Day Reset Now – £7</a>
+
+        <p class="guarantee">30-day money-back guarantee. If it doesn't work, get your full refund.</p>
+    </div>
+
+    <!-- Sticky CTA for Mobile -->
+    <div class="sticky-cta">
+        <a href="#purchase" class="cta-button" style="margin: 0;">📥 Download Now – £7</a>
+    </div>
+
+    <script>
+        // Simple scroll tracking for sticky CTA
+        window.addEventListener('scroll', function() {
+            const stickyBtn = document.querySelector('.sticky-cta');
+            if (window.scrollY > 300) {
+                stickyBtn.style.display = 'block';
+            } else {
+                stickyBtn.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
