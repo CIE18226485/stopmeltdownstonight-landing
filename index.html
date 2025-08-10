@@ -4,6 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>7-Day Preschooler Behavior Reset - Stop Meltdowns Fast</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMJ1V9W8BM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZMJ1V9W8BM');
+      
+      // Enhanced tracking functions
+      function trackCTAClick(buttonLocation) {
+        gtag('event', 'purchase_intent', {
+          'event_category': 'engagement',
+          'event_label': buttonLocation,
+          'value': 7
+        });
+      }
+      
+      // Track scroll depth
+      let scrollTracked = false;
+      window.addEventListener('scroll', function() {
+        if (!scrollTracked && window.scrollY > document.body.scrollHeight * 0.75) {
+          gtag('event', 'scroll_75_percent', {
+            'event_category': 'engagement'
+          });
+          scrollTracked = true;
+        }
+      });
+    </script>
+    
     <style>
         * {
             margin: 0;
@@ -280,7 +310,7 @@
             <p class="urgency-text">🚨 Start Tonight - Instant Download After Purchase</p>
         </div>
 
-        <a href="#purchase" class="cta-button">📥 Download Now – Only £7</a>
+        <a href="#purchase" class="cta-button" onclick="trackCTAClick('main_cta')">📥 Download Now – Only £7</a>
 
         <div class="testimonials">
             <h3>What Other Parents Are Saying:</h3>
@@ -304,14 +334,14 @@
             <div class="trust-badge">Money Back<br>Guarantee</div>
         </div>
 
-        <a href="#purchase" class="cta-button">📥 Get Your 7-Day Reset Now – £7</a>
+        <a href="#purchase" class="cta-button" onclick="trackCTAClick('bottom_cta')">📥 Get Your 7-Day Reset Now – £7</a>
 
         <p class="guarantee">30-day money-back guarantee. If it doesn't work, get your full refund.</p>
     </div>
 
     <!-- Sticky CTA for Mobile -->
     <div class="sticky-cta">
-        <a href="#purchase" class="cta-button" style="margin: 0;">📥 Download Now – £7</a>
+        <a href="#purchase" class="cta-button" onclick="trackCTAClick('sticky_mobile')" style="margin: 0;">📥 Download Now – £7</a>
     </div>
 
     <script>
