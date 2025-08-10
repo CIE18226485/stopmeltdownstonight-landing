@@ -5,28 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Your 7-Day Reset is Ready!</title>
     
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMJ1V9W8BM"></script>
+    <!-- Meta Pixel Code -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ZMJ1V9W8BM');
-      
-      // Track successful purchase
-      gtag('event', 'purchase', {
-        'transaction_id': 'ORDER_' + Date.now(),
-        'value': 7.00,
-        'currency': 'GBP',
-        'items': [{
-          'item_id': 'behavior_reset_pdf',
-          'item_name': '7-Day Preschooler Behavior Reset',
-          'category': 'Digital Product',
-          'quantity': 1,
-          'price': 7.00
-        }]
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1293754655481892');
+    fbq('track', 'PageView');
+
+    // Track successful purchase
+    fbq('track', 'Purchase', {
+      value: 7.00,
+      currency: 'GBP',
+      content_name: '7-Day Preschooler Behavior Reset',
+      content_type: 'product',
+      content_ids: ['behavior_reset_pdf'],
+      content_category: 'Digital Product',
+      num_items: 1
+    });
+
+    // Track download button clicks
+    function trackDownload() {
+      fbq('track', 'Lead', {
+        content_name: '7-Day Preschooler Behavior Reset PDF Download',
+        content_category: 'Digital Product'
       });
+    }
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1293754655481892&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     
     <style>
         * {
@@ -251,7 +265,7 @@
         
         <div class="download-section">
             <h3 style="color: #228B22; margin-bottom: 15px; font-size: 1.3rem;">📥 Download Your Guide Now</h3>
-            <a href="downloads/7-day-preschooler-behavior-reset.pdf" class="download-button" download>
+            <a href="downloads/7-day-preschooler-behavior-reset.pdf" class="download-button" onclick="trackDownload()" download>
                 Download Your 7-Day Reset Guide
             </a>
             <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">
