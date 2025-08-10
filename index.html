@@ -101,17 +101,11 @@
         .hero-image {
             width: 100%;
             max-width: 400px;
-            height: 300px;
-            background: linear-gradient(135deg, #FFE4B5, #F0E68C);
+            height: auto;
             border: 3px solid #DDD;
             border-radius: 15px;
             margin: 20px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #888;
-            font-weight: bold;
-            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         .benefits {
@@ -223,15 +217,18 @@
         .trust-badge {
             width: 80px;
             height: 60px;
-            background: #F5F5F5;
             border: 2px solid #DDD;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #888;
-            font-size: 0.8rem;
-            font-weight: bold;
+            overflow: hidden;
+        }
+        
+        .trust-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
         
         .sticky-cta {
@@ -289,11 +286,8 @@
         <div class="hero">
             <h1 class="headline">Exhausted by Daily Meltdowns, Backtalk & Power Struggles?</h1>
             <p class="subheadline">Transform Your Preschooler's Behavior in Just 7 Days</p>
-            <div class="price-badge">Only £7 - Instant Download</div>
-            <div class="hero-image">
-                Before/After Cartoon Image<br>
-                (Placeholder - 400x300px)
-            </div>
+            <a href="https://buy.stripe.com/YOUR_STRIPE_LINK" class="price-badge" onclick="trackCTAClick('price_badge')" style="text-decoration: none; cursor: pointer;">Only £7 - Instant Download</a>
+            <img src="downloads/hero-image.jpg" alt="Before and After: Calm, Happy Preschooler" class="hero-image" />
         </div>
 
         <div class="benefits">
@@ -310,7 +304,7 @@
             <p class="urgency-text">🚨 Start Tonight - Instant Download After Purchase</p>
         </div>
 
-        <a href="#purchase" class="cta-button" onclick="trackCTAClick('main_cta')">📥 Download Now – Only £7</a>
+        <a href="https://buy.stripe.com/YOUR_STRIPE_LINK" class="cta-button" onclick="trackCTAClick('main_cta')">📥 Download Now – Only £7</a>
 
         <div class="testimonials">
             <h3>What Other Parents Are Saying:</h3>
@@ -329,19 +323,25 @@
         </div>
 
         <div class="trust-badges">
-            <div class="trust-badge">Secure<br>Payment</div>
-            <div class="trust-badge">Instant<br>Access</div>
-            <div class="trust-badge">Money Back<br>Guarantee</div>
+            <div class="trust-badge">
+                <img src="downloads/secure-payment.png" alt="Secure Payment" />
+            </div>
+            <div class="trust-badge">
+                <img src="downloads/instant-access.png" alt="Instant Access" />
+            </div>
+            <div class="trust-badge">
+                <img src="downloads/money-back.png" alt="Money Back Guarantee" />
+            </div>
         </div>
 
-        <a href="#purchase" class="cta-button" onclick="trackCTAClick('bottom_cta')">📥 Get Your 7-Day Reset Now – £7</a>
+        <a href="https://buy.stripe.com/YOUR_STRIPE_LINK" class="cta-button" onclick="trackCTAClick('bottom_cta')">📥 Get Your 7-Day Reset Now – £7</a>
 
         <p class="guarantee">30-day money-back guarantee. If it doesn't work, get your full refund.</p>
     </div>
 
     <!-- Sticky CTA for Mobile -->
     <div class="sticky-cta">
-        <a href="#purchase" class="cta-button" onclick="trackCTAClick('sticky_mobile')" style="margin: 0;">📥 Download Now – £7</a>
+        <a href="https://buy.stripe.com/YOUR_STRIPE_LINK" class="cta-button" onclick="trackCTAClick('sticky_mobile')" style="margin: 0;">📥 Download Now – £7</a>
     </div>
 
     <script>
