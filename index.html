@@ -112,7 +112,8 @@
         .hero-image {
             width: 100%;
             max-width: 400px;
-            height: 300px;
+            height: auto;
+            min-height: 250px;
             border: 3px solid #DDD;
             border-radius: 15px;
             margin: 20px auto;
@@ -122,6 +123,7 @@
             object-position: center;
             background: #f8f9fa;
             display: block;
+            padding: 10px;
         }
         
         .hero-image[data-lazy] {
@@ -135,7 +137,7 @@
         .image-placeholder {
             width: 100%;
             max-width: 400px;
-            height: 300px;
+            height: 270px;
             background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
             background-size: 200% 100%;
             animation: shimmer 1.5s infinite;
@@ -148,6 +150,8 @@
             color: #999;
             font-size: 1rem;
             font-weight: 600;
+            padding: 10px;
+            box-sizing: border-box;
         }
         
         @keyframes shimmer {
@@ -334,7 +338,9 @@
             
             .hero-image,
             .image-placeholder {
-                height: 250px;
+                height: auto;
+                min-height: 200px;
+                padding: 8px;
             }
             
             .trust-badges {
