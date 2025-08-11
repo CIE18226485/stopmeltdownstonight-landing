@@ -110,12 +110,13 @@
         .hero-image {
             width: 100%;
             max-width: 400px;
-            height: 300px;
+            height: auto;
+            min-height: 200px;
             border: 3px solid #DDD;
             border-radius: 15px;
             margin: 20px auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            object-fit: cover;
+            object-fit: contain;
             object-position: center;
             background: #f8f9fa;
             display: block;
@@ -284,7 +285,8 @@
             }
             
             .hero-image {
-                height: 250px;
+                min-height: 150px;
+                max-width: 350px;
             }
             
             .trust-badges {
@@ -317,7 +319,7 @@
             <p class="subheadline">Transform Your Preschooler's Behavior in Just 7 Days</p>
             <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="price-badge" onclick="trackCTAClick('price_badge')" style="text-decoration: none; cursor: pointer;">Only £7 - Instant Download</a>
             
-            <!-- Optimized hero image - no lazy loading, proper sizing -->
+            <!-- Optimized hero image - now properly fitted -->
             <img src="downloads/Untitled design (1).webp" 
                  alt="Before and After: Calm, Happy Preschooler transformation guide" 
                  class="hero-image" 
