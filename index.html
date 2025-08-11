@@ -6,6 +6,12 @@
     <meta name="description" content="Transform your preschooler's behavior in just 7 days. Stop meltdowns, end bedtime battles, and get your sanity back. Download our proven guide for only £7.">
     <title>7-Day Preschooler Behavior Reset - Stop Meltdowns Fast</title>
     
+    <!-- Preconnect to speed up third-party resources -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin>
+    <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <!-- Preload critical resources -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
@@ -19,25 +25,8 @@
       gtag('config', 'G-ZMJ1V9W8BM');
     </script>
     
-    <!-- Meta Pixel Code - Async Loading -->
+    <!-- Meta Pixel Code -->
     <script>
-    window.fbAsyncInit = function() {
-        FB.init({
-            appId: '1293754655481892',
-            xfbml: true,
-            version: 'v18.0'
-        });
-    };
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-
-    // Initialize pixel tracking
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -121,51 +110,15 @@
         .hero-image {
             width: 100%;
             max-width: 400px;
-            height: auto;
-            min-height: 250px;
+            height: 300px;
             border: 3px solid #DDD;
             border-radius: 15px;
             margin: 20px auto;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: opacity 0.3s ease;
-            object-fit: contain;
+            object-fit: cover;
             object-position: center;
             background: #f8f9fa;
             display: block;
-            padding: 10px;
-        }
-        
-        .hero-image[data-lazy] {
-            opacity: 0;
-        }
-        
-        .hero-image.loaded {
-            opacity: 1;
-        }
-        
-        .image-placeholder {
-            width: 100%;
-            max-width: 400px;
-            height: 270px;
-            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border: 3px solid #DDD;
-            border-radius: 15px;
-            margin: 20px auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 1rem;
-            font-weight: 600;
-            padding: 10px;
-            box-sizing: border-box;
-        }
-        
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
         }
         
         .benefits {
@@ -308,8 +261,6 @@
             opacity: 0.8;
         }
         
-        /* Removed sticky CTA styles - no longer needed */
-        
         .guarantee {
             text-align: center;
             color: #666;
@@ -332,11 +283,8 @@
                 margin-bottom: 80px;
             }
             
-            .hero-image,
-            .image-placeholder {
-                height: auto;
-                min-height: 200px;
-                padding: 8px;
+            .hero-image {
+                height: 250px;
             }
             
             .trust-badges {
@@ -356,12 +304,6 @@
             }
         }
 
-        /* Preload and optimize critical rendering path */
-        .hero-image {
-            content-visibility: auto;
-            contain-intrinsic-size: 400px 300px;
-        }
-
         /* Reduce layout shift */
         .benefits, .testimonials, .trust-badges {
             contain: layout style;
@@ -375,14 +317,14 @@
             <p class="subheadline">Transform Your Preschooler's Behavior in Just 7 Days</p>
             <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="price-badge" onclick="trackCTAClick('price_badge')" style="text-decoration: none; cursor: pointer;">Only £7 - Instant Download</a>
             
-            <!-- Optimized hero image with proper sizing -->
-            <img data-lazy="downloads/Untitled design.webp" 
+            <!-- Optimized hero image - no lazy loading, proper sizing -->
+            <img src="downloads/Untitled-design-400.webp" 
                  alt="Before and After: Calm, Happy Preschooler transformation guide" 
                  class="hero-image" 
                  width="400"
                  height="300"
-                 style="display: none;" />
-            <div class="image-placeholder" id="image-placeholder" role="img" aria-label="Loading transformation guide preview">Loading...</div>
+                 loading="eager"
+                 fetchpriority="high" />
         </header>
 
         <section class="benefits">
@@ -437,12 +379,7 @@
         <p class="guarantee">30-day money-back guarantee. If it doesn't work, get your full refund.</p>
     </div>
 
-    <!-- Optimized JavaScript - moved to bottom and made more efficient -->
     <script>
-        // Shared variables
-        let scrollTracked = false;
-        let lazyImagesLoaded = false;
-
         // Enhanced tracking functions for Meta Pixel and Google Analytics
         function trackCTAClick(buttonLocation) {
             // Meta Pixel tracking
@@ -451,12 +388,26 @@
                     content_name: '7-Day Preschooler Behavior Reset',
                     content_category: 'Digital Guide',
                     value: 7.00,
-                    currency: 'GBP'
+                    currency: 'GBP',
+                    content_ids: ['preschool-reset-7day'],
+                    num_items: 1
                 });
             }
             
             // Google Analytics tracking
             if (typeof gtag !== 'undefined') {
+                gtag('event', 'begin_checkout', {
+                    currency: 'GBP',
+                    value: 7.00,
+                    items: [{
+                        item_id: 'preschool-reset-7day',
+                        item_name: '7-Day Preschooler Behavior Reset',
+                        price: 7.00,
+                        quantity: 1
+                    }]
+                });
+                
+                // Also track which button was clicked
                 gtag('event', 'click', {
                     event_category: 'CTA Button',
                     event_label: buttonLocation,
@@ -465,115 +416,154 @@
             }
         }
 
-        // Optimized lazy loading with better performance
-        function lazyLoadImages() {
-            if (lazyImagesLoaded) return;
+        // Fire ViewContent immediately on page load
+        function fireViewContent() {
+            if (window.__vcFired) return;
+            window.__vcFired = true;
             
-            const lazyImages = document.querySelectorAll('img[data-lazy]');
-            
-            // If image is already in viewport or near top, load immediately
-            const heroImage = lazyImages[0];
-            if (heroImage) {
-                const rect = heroImage.getBoundingClientRect();
-                if (rect.top < window.innerHeight + 200) {
-                    loadImage(heroImage);
-                    return;
-                }
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {
+                    content_name: '7-Day Preschooler Behavior Reset',
+                    content_category: 'Digital Guide',
+                    content_type: 'product',
+                    value: 7.00,
+                    currency: 'GBP'
+                });
             }
             
-            const imageObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        loadImage(entry.target);
-                        observer.unobserve(entry.target);
-                    }
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'view_item', {
+                    currency: 'GBP',
+                    value: 7.00,
+                    items: [{
+                        item_id: 'preschool-reset-7day',
+                        item_name: '7-Day Preschooler Behavior Reset',
+                        price: 7.00,
+                        category: 'Digital Guide'
+                    }]
                 });
-            }, {
-                root: null,
-                rootMargin: '100px', // Increased margin
-                threshold: 0
-            });
-
-            lazyImages.forEach(img => imageObserver.observe(img));
-            lazyImagesLoaded = true;
+            }
         }
+
+        // Engagement tracking timers
+        function setupEngagementTracking() {
+            // 10 second engagement
+            setTimeout(() => {
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'TimeOnPage_10s', {
+                        content_name: '7-Day Preschooler Behavior Reset'
+                    });
+                }
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'engagement', {
+                        event_category: 'User Engagement',
+                        event_label: '10 seconds on page'
+                    });
+                }
+            }, 10000);
+
+            // 30 second engagement (high interest)
+            setTimeout(() => {
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'HighlyEngaged_30s', {
+                        content_name: '7-Day Preschooler Behavior Reset',
+                        value: 7.00,
+                        currency: 'GBP'
+                    });
+                }
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'engagement', {
+                        event_category: 'User Engagement',
+                        event_label: '30 seconds on page',
+                        value: 1
+                    });
+                }
+            }, 30000);
+
+            // 60 second engagement (very high interest)
+            setTimeout(() => {
+                if (typeof fbq !== 'undefined') {
+                    fbq('trackCustom', 'VeryEngaged_60s', {
+                        content_name: '7-Day Preschooler Behavior Reset',
+                        value: 7.00,
+                        currency: 'GBP'
+                    });
+                }
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'engagement', {
+                        event_category: 'User Engagement',
+                        event_label: '60 seconds on page',
+                        value: 2
+                    });
+                }
+            }, 60000);
+        }
+
+        // Scroll depth tracking
+        let scrollDepths = {25: false, 50: false, 75: false, 90: false};
         
-        function loadImage(img) {
-            const placeholder = document.getElementById('image-placeholder');
+        function trackScrollDepth() {
+            const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
             
-            // Preload the image
-            const tempImg = new Image();
-            tempImg.onload = function() {
-                img.src = img.dataset.lazy;
-                img.style.display = 'block';
-                img.classList.add('loaded');
-                
-                if (placeholder) {
-                    placeholder.style.display = 'none';
-                }
-            };
-            
-            tempImg.onerror = function() {
-                if (placeholder) {
-                    placeholder.textContent = 'Image unavailable - check file path';
-                    placeholder.style.background = '#f5f5f5';
-                    placeholder.style.animation = 'none';
-                }
-            };
-            
-            tempImg.src = img.dataset.lazy;
-        }
-
-        // Throttled scroll handler for better performance
-        let ticking = false;
-        function handleScroll() {
-            if (!ticking) {
-                requestAnimationFrame(function() {
-                    const scrollY = window.pageYOffset;
-                    const documentHeight = document.body.scrollHeight;
-
-                    // Tracking logic for both platforms
-                    if (!scrollTracked && scrollY > documentHeight * 0.75) {
-                        // Meta Pixel tracking
-                        if (typeof fbq !== 'undefined') {
-                            fbq('track', 'ViewContent', {
-                                content_name: '7-Day Preschooler Behavior Reset',
-                                content_type: 'product'
-                            });
-                        }
-                        
-                        // Google Analytics tracking
-                        if (typeof gtag !== 'undefined') {
-                            gtag('event', 'scroll', {
-                                event_category: 'Engagement',
-                                event_label: '75% Page Scroll'
-                            });
-                        }
-                        
-                        scrollTracked = true;
+            for (let depth in scrollDepths) {
+                if (scrollPercent >= depth && !scrollDepths[depth]) {
+                    scrollDepths[depth] = true;
+                    
+                    if (typeof fbq !== 'undefined') {
+                        fbq('trackCustom', `ScrollDepth_${depth}`, {
+                            content_name: '7-Day Preschooler Behavior Reset'
+                        });
                     }
                     
-                    ticking = false;
-                });
-                ticking = true;
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'scroll', {
+                            event_category: 'Engagement',
+                            event_label: `${depth}% Scroll Depth`,
+                            value: parseInt(depth)
+                        });
+                    }
+                }
             }
+        }
+
+        // Throttle scroll events for performance
+        let scrollTimer;
+        function handleScroll() {
+            if (scrollTimer) return;
+            scrollTimer = setTimeout(() => {
+                trackScrollDepth();
+                scrollTimer = null;
+            }, 150);
         }
 
         // Initialize everything when DOM is ready
         function init() {
-            // Initialize lazy loading
-            if ('IntersectionObserver' in window) {
-                lazyLoadImages();
-            } else {
-                // Fallback for older browsers - load immediately
-                const lazyImages = document.querySelectorAll('img[data-lazy]');
-                lazyImages.forEach(img => {
-                    loadImage(img);
-                });
-            }
-
+            // Fire ViewContent immediately
+            fireViewContent();
+            
+            // Set up engagement tracking
+            setupEngagementTracking();
+            
             // Add scroll listener
             window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Track if user tries to leave (exit intent)
+            document.addEventListener('mouseleave', function(e) {
+                if (e.clientY <= 0 && !window.__exitTracked) {
+                    window.__exitTracked = true;
+                    if (typeof fbq !== 'undefined') {
+                        fbq('trackCustom', 'ExitIntent', {
+                            content_name: '7-Day Preschooler Behavior Reset'
+                        });
+                    }
+                    if (typeof gtag !== 'undefined') {
+                        gtag('event', 'exit_intent', {
+                            event_category: 'User Behavior',
+                            event_label: 'Mouse left viewport'
+                        });
+                    }
+                }
+            });
         }
 
         // Wait for DOM to be ready
@@ -582,6 +572,9 @@
         } else {
             init();
         }
+
+        // Also fire ViewContent after a slight delay to ensure pixels are loaded
+        setTimeout(fireViewContent, 100);
     </script>
 </body>
 </html>
