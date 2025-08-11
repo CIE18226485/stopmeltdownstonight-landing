@@ -267,8 +267,8 @@
         }
         
         .trust-badge {
-            width: 80px;
-            height: 60px;
+            width: 85px;
+            height: 65px;
             border: 1px solid #E5E5E5;
             border-radius: 12px;
             display: flex;
@@ -276,14 +276,14 @@
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             color: #666;
             text-align: center;
-            line-height: 1.2;
+            line-height: 1.1;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
             transition: all 0.3s ease;
-            padding: 8px 4px;
+            padding: 6px 4px;
             will-change: transform;
         }
         
@@ -294,25 +294,12 @@
         }
         
         .trust-badge .icon {
-            font-size: 1.8rem;
-            margin-bottom: 6px;
+            font-size: 1.4rem;
+            margin-bottom: 4px;
             opacity: 0.8;
         }
         
-        .sticky-cta {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            padding: 15px;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
-            z-index: 1000;
-            display: none;
-            opacity: 0;
-            transform: translateY(100%);
-            transition: all 0.3s ease;
-        }
+        /* Removed sticky CTA styles - no longer needed */
         
         .guarantee {
             text-align: center;
@@ -380,7 +367,7 @@
             <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="price-badge" onclick="trackCTAClick('price_badge')" style="text-decoration: none; cursor: pointer;">Only £7 - Instant Download</a>
             
             <!-- Optimized hero image with proper sizing -->
-            <img data-lazy="downloads/Untitled design (1).webp" 
+            <img data-lazy="downloads/Untitled design.webp" 
                  alt="Before and After: Calm, Happy Preschooler transformation guide" 
                  class="hero-image" 
                  width="400"
@@ -439,11 +426,6 @@
         <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="cta-button" onclick="trackCTAClick('bottom_cta')">📥 Get Your 7-Day Reset Now – £7</a>
 
         <p class="guarantee">30-day money-back guarantee. If it doesn't work, get your full refund.</p>
-    </div>
-
-    <!-- Sticky CTA for Mobile -->
-    <div class="sticky-cta">
-        <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="cta-button" onclick="trackCTAClick('sticky_mobile')" style="margin: 0;">📥 Download Now – £7</a>
     </div>
 
     <!-- Optimized JavaScript - moved to bottom and made more efficient -->
@@ -530,22 +512,6 @@
                 requestAnimationFrame(function() {
                     const scrollY = window.pageYOffset;
                     const documentHeight = document.body.scrollHeight;
-                    
-                    // Sticky CTA logic
-                    const stickyBtn = document.querySelector('.sticky-cta');
-                    if (scrollY > 800) {
-                        stickyBtn.style.display = 'block';
-                        stickyBtn.style.opacity = '1';
-                        stickyBtn.style.transform = 'translateY(0)';
-                    } else {
-                        stickyBtn.style.opacity = '0';
-                        stickyBtn.style.transform = 'translateY(100%)';
-                        setTimeout(() => {
-                            if (window.pageYOffset <= 800) {
-                                stickyBtn.style.display = 'none';
-                            }
-                        }, 300);
-                    }
 
                     // Meta Pixel tracking logic
                     if (!scrollTracked && scrollY > documentHeight * 0.75) {
