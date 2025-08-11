@@ -10,6 +10,15 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
     
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZMJ1V9W8BM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZMJ1V9W8BM');
+    </script>
+    
     <!-- Meta Pixel Code - Async Loading -->
     <script>
     window.fbAsyncInit = function() {
@@ -434,14 +443,24 @@
         let scrollTracked = false;
         let lazyImagesLoaded = false;
 
-        // Enhanced tracking functions for Meta Pixel
+        // Enhanced tracking functions for Meta Pixel and Google Analytics
         function trackCTAClick(buttonLocation) {
+            // Meta Pixel tracking
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'InitiateCheckout', {
                     content_name: '7-Day Preschooler Behavior Reset',
                     content_category: 'Digital Guide',
                     value: 7.00,
                     currency: 'GBP'
+                });
+            }
+            
+            // Google Analytics tracking
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'click', {
+                    event_category: 'CTA Button',
+                    event_label: buttonLocation,
+                    value: 7
                 });
             }
         }
@@ -513,14 +532,24 @@
                     const scrollY = window.pageYOffset;
                     const documentHeight = document.body.scrollHeight;
 
-                    // Meta Pixel tracking logic
+                    // Tracking logic for both platforms
                     if (!scrollTracked && scrollY > documentHeight * 0.75) {
+                        // Meta Pixel tracking
                         if (typeof fbq !== 'undefined') {
                             fbq('track', 'ViewContent', {
                                 content_name: '7-Day Preschooler Behavior Reset',
                                 content_type: 'product'
                             });
                         }
+                        
+                        // Google Analytics tracking
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'scroll', {
+                                event_category: 'Engagement',
+                                event_label: '75% Page Scroll'
+                            });
+                        }
+                        
                         scrollTracked = true;
                     }
                     
