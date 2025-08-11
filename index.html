@@ -461,44 +461,58 @@
             if (lazyImagesLoaded) return;
             
             const lazyImages = document.querySelectorAll('img[data-lazy]');
+            
+            // If image is already in viewport or near top, load immediately
+            const heroImage = lazyImages[0];
+            if (heroImage) {
+                const rect = heroImage.getBoundingClientRect();
+                if (rect.top < window.innerHeight + 200) {
+                    loadImage(heroImage);
+                    return;
+                }
+            }
+            
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        const img = entry.target;
-                        const placeholder = document.getElementById('image-placeholder');
-                        
-                        // Preload the image
-                        const tempImg = new Image();
-                        tempImg.onload = function() {
-                            img.src = img.dataset.lazy;
-                            img.style.display = 'block';
-                            img.classList.add('loaded');
-                            
-                            if (placeholder) {
-                                placeholder.style.display = 'none';
-                            }
-                        };
-                        
-                        tempImg.onerror = function() {
-                            if (placeholder) {
-                                placeholder.textContent = 'Image unavailable';
-                                placeholder.style.background = '#f5f5f5';
-                                placeholder.style.animation = 'none';
-                            }
-                        };
-                        
-                        tempImg.src = img.dataset.lazy;
-                        observer.unobserve(img);
+                        loadImage(entry.target);
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
                 root: null,
-                rootMargin: '50px',
-                threshold: 0.1
+                rootMargin: '100px', // Increased margin
+                threshold: 0
             });
 
             lazyImages.forEach(img => imageObserver.observe(img));
             lazyImagesLoaded = true;
+        }
+        
+        function loadImage(img) {
+            const placeholder = document.getElementById('image-placeholder');
+            
+            // Preload the image
+            const tempImg = new Image();
+            tempImg.onload = function() {
+                img.src = img.dataset.lazy;
+                img.style.display = 'block';
+                img.classList.add('loaded');
+                
+                if (placeholder) {
+                    placeholder.style.display = 'none';
+                }
+            };
+            
+            tempImg.onerror = function() {
+                if (placeholder) {
+                    placeholder.textContent = 'Image unavailable - check file path';
+                    placeholder.style.background = '#f5f5f5';
+                    placeholder.style.animation = 'none';
+                }
+            };
+            
+            tempImg.src = img.dataset.lazy;
         }
 
         // Throttled scroll handler for better performance
@@ -548,16 +562,10 @@
             if ('IntersectionObserver' in window) {
                 lazyLoadImages();
             } else {
-                // Fallback for older browsers
+                // Fallback for older browsers - load immediately
                 const lazyImages = document.querySelectorAll('img[data-lazy]');
                 lazyImages.forEach(img => {
-                    img.src = img.dataset.lazy;
-                    img.style.display = 'block';
-                    img.classList.add('loaded');
-                    const placeholder = document.getElementById('image-placeholder');
-                    if (placeholder) {
-                        placeholder.style.display = 'none';
-                    }
+                    loadImage(img);
                 });
             }
 
