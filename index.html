@@ -3,10 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transform your preschooler's behavior in just 7 days. Stop meltdowns, end bedtime battles, and get your sanity back. Download our proven guide for only £7.">
     <title>7-Day Preschooler Behavior Reset - Stop Meltdowns Fast</title>
     
-    <!-- Meta Pixel Code -->
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap"></noscript>
+    
+    <!-- Meta Pixel Code - Async Loading -->
     <script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: '1293754655481892',
+            xfbml: true,
+            version: 'v18.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    // Initialize pixel tracking
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -17,33 +39,10 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1293754655481892');
     fbq('track', 'PageView');
-
-    // Enhanced tracking functions for Meta Pixel
-    function trackCTAClick(buttonLocation) {
-      fbq('track', 'InitiateCheckout', {
-        content_name: '7-Day Preschooler Behavior Reset',
-        content_category: 'Digital Guide',
-        value: 7.00,
-        currency: 'GBP'
-      });
-    }
-
-    // Track scroll depth
-    let scrollTracked = false;
-    window.addEventListener('scroll', function() {
-      if (!scrollTracked && window.scrollY > document.body.scrollHeight * 0.75) {
-        fbq('track', 'ViewContent', {
-          content_name: '7-Day Preschooler Behavior Reset',
-          content_type: 'product'
-        });
-        scrollTracked = true;
-      }
-    });
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1293754655481892&ev=PageView&noscript=1"
     /></noscript>
-    <!-- End Meta Pixel Code -->
     
     <style>
         * {
@@ -53,7 +52,7 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: #333;
             background: linear-gradient(135deg, #FFF8DC 0%, #F0F8FF 100%);
@@ -73,7 +72,7 @@
             margin-bottom: 30px;
         }
         
-        .headline {
+        h1.headline {
             font-size: 2.2rem;
             font-weight: 800;
             color: #D2691E;
@@ -93,13 +92,14 @@
             background: linear-gradient(45deg, #FFD700, #FFA500);
             color: #8B4513;
             font-size: 1.4rem;
-            font-weight: bold;
+            font-weight: 700;
             padding: 12px 25px;
             border-radius: 50px;
             display: inline-block;
             margin: 15px 0;
             border: 3px solid #FF8C00;
             box-shadow: 0 4px 15px rgba(255,165,0,0.3);
+            will-change: transform;
             animation: pulse 2s infinite;
         }
         
@@ -112,11 +112,45 @@
         .hero-image {
             width: 100%;
             max-width: 400px;
-            height: auto;
+            height: 300px;
             border: 3px solid #DDD;
             border-radius: 15px;
             margin: 20px 0;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: opacity 0.3s ease;
+            object-fit: cover;
+            background: #f8f9fa;
+        }
+        
+        .hero-image[data-lazy] {
+            opacity: 0;
+        }
+        
+        .hero-image.loaded {
+            opacity: 1;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            border: 3px solid #DDD;
+            border-radius: 15px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
         
         .benefits {
@@ -127,7 +161,7 @@
             border: 2px solid #90EE90;
         }
         
-        .benefits h3 {
+        .benefits h2 {
             font-size: 1.4rem;
             color: #228B22;
             margin-bottom: 15px;
@@ -169,7 +203,7 @@
             color: white;
             padding: 18px 35px;
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 700;
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -180,6 +214,7 @@
             text-decoration: none;
             display: block;
             text-align: center;
+            will-change: transform;
         }
         
         .cta-button:hover {
@@ -192,7 +227,7 @@
             margin: 30px 0;
         }
         
-        .testimonials h3 {
+        .testimonials h2 {
             font-size: 1.3rem;
             color: #D2691E;
             text-align: center;
@@ -210,7 +245,7 @@
         }
         
         .testimonial-author {
-            font-weight: bold;
+            font-weight: 600;
             color: #D2691E;
             margin-top: 8px;
             font-style: normal;
@@ -228,23 +263,34 @@
         .trust-badge {
             width: 80px;
             height: 60px;
-            border: 2px solid #DDD;
-            border-radius: 8px;
+            border: 1px solid #E5E5E5;
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: #F9F9F9;
+            background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
             font-size: 0.75rem;
-            font-weight: bold;
-            color: #555;
+            font-weight: 600;
+            color: #666;
             text-align: center;
             line-height: 1.2;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            padding: 8px 4px;
+            will-change: transform;
+        }
+        
+        .trust-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            border-color: #D0D0D0;
         }
         
         .trust-badge .icon {
-            font-size: 1.5rem;
-            margin-bottom: 4px;
+            font-size: 1.8rem;
+            margin-bottom: 6px;
+            opacity: 0.8;
         }
         
         .sticky-cta {
@@ -262,8 +308,16 @@
             transition: all 0.3s ease;
         }
         
+        .guarantee {
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
         @media (max-width: 768px) {
-            .headline {
+            h1.headline {
                 font-size: 1.8rem;
             }
             
@@ -276,8 +330,9 @@
                 margin-bottom: 80px;
             }
             
-            .sticky-cta {
-                display: none;
+            .hero-image,
+            .image-placeholder {
+                height: 250px;
             }
             
             .trust-badges {
@@ -288,36 +343,53 @@
                 width: 70px;
                 height: 50px;
                 font-size: 0.7rem;
+                padding: 6px 3px;
+            }
+            
+            .trust-badge .icon {
+                font-size: 1.4rem;
+                margin-bottom: 4px;
             }
         }
-        
-        .guarantee {
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 15px;
-            font-style: italic;
+
+        /* Preload and optimize critical rendering path */
+        .hero-image {
+            content-visibility: auto;
+            contain-intrinsic-size: 400px 300px;
+        }
+
+        /* Reduce layout shift */
+        .benefits, .testimonials, .trust-badges {
+            contain: layout style;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="hero">
+        <header class="hero">
             <h1 class="headline">Is Your Child's Behaviour Driving You Crazy?</h1>
             <p class="subheadline">Transform Your Preschooler's Behavior in Just 7 Days</p>
             <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="price-badge" onclick="trackCTAClick('price_badge')" style="text-decoration: none; cursor: pointer;">Only £7 - Instant Download</a>
-            <img src="downloads/Untitled design.png" alt="Before and After: Calm, Happy Preschooler" class="hero-image" />
-        </div>
+            
+            <!-- Optimized hero image with proper sizing -->
+            <img data-lazy="downloads/Untitled design.webp" 
+                 alt="Before and After: Calm, Happy Preschooler transformation guide" 
+                 class="hero-image" 
+                 width="400"
+                 height="300"
+                 style="display: none;" />
+            <div class="image-placeholder" id="image-placeholder" role="img" aria-label="Loading transformation guide preview">Loading...</div>
+        </header>
 
-        <div class="benefits">
-            <h3>What You'll Get Inside This 7-Day Reset Guide:</h3>
+        <section class="benefits">
+            <h2>What You'll Get Inside This 7-Day Reset Guide:</h2>
             <div class="benefit-item">Day-by-day action plan to stop meltdowns before they start</div>
             <div class="benefit-item">3 magic phrases that end backtalk instantly (without yelling)</div>
             <div class="benefit-item">The "2-minute reset" technique for when things go wrong</div>
             <div class="benefit-item">Simple bedtime routine that eliminates bedtime battles</div>
             <div class="benefit-item">Printable behavior charts your child will actually want to use</div>
             <div class="benefit-item">Emergency tactics for public meltdowns that work every time</div>
-        </div>
+        </section>
 
         <div class="urgency">
             <p class="urgency-text">🚨 Start Tonight - Instant Download After Purchase</p>
@@ -325,8 +397,8 @@
 
         <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="cta-button" onclick="trackCTAClick('main_cta')">📥 Download Now – Only £7</a>
 
-        <div class="testimonials">
-            <h3>What Other Parents Are Saying:</h3>
+        <section class="testimonials">
+            <h2>What Other Parents Are Saying:</h2>
             <div class="testimonial">
                 "Day 3 and the tantrums have already stopped! I wish I'd found this sooner."
                 <div class="testimonial-author">— Sarah M., Mum of 4-year-old</div>
@@ -339,7 +411,7 @@
                 "The bedtime routine alone was worth every penny. We actually have our evenings back!"
                 <div class="testimonial-author">— Emma K., Mum of 5-year-old</div>
             </div>
-        </div>
+        </section>
 
         <div class="trust-badges">
             <div class="trust-badge">
@@ -366,24 +438,139 @@
         <a href="https://buy.stripe.com/8x23cv6xWcCIbbCfDC2VG02" class="cta-button" onclick="trackCTAClick('sticky_mobile')" style="margin: 0;">📥 Download Now – £7</a>
     </div>
 
+    <!-- Optimized JavaScript - moved to bottom and made more efficient -->
     <script>
-        // Simple scroll tracking for sticky CTA
-        window.addEventListener('scroll', function() {
-            const stickyBtn = document.querySelector('.sticky-cta');
-            if (window.scrollY > 800) {
-                stickyBtn.style.display = 'block';
-                stickyBtn.style.opacity = '1';
-                stickyBtn.style.transform = 'translateY(0)';
-            } else {
-                stickyBtn.style.opacity = '0';
-                stickyBtn.style.transform = 'translateY(100%)';
-                setTimeout(() => {
-                    if (window.scrollY <= 800) {
-                        stickyBtn.style.display = 'none';
-                    }
-                }, 300);
+        // Shared variables
+        let scrollTracked = false;
+        let lazyImagesLoaded = false;
+
+        // Enhanced tracking functions for Meta Pixel
+        function trackCTAClick(buttonLocation) {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout', {
+                    content_name: '7-Day Preschooler Behavior Reset',
+                    content_category: 'Digital Guide',
+                    value: 7.00,
+                    currency: 'GBP'
+                });
             }
-        });
+        }
+
+        // Optimized lazy loading with better performance
+        function lazyLoadImages() {
+            if (lazyImagesLoaded) return;
+            
+            const lazyImages = document.querySelectorAll('img[data-lazy]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const placeholder = document.getElementById('image-placeholder');
+                        
+                        // Preload the image
+                        const tempImg = new Image();
+                        tempImg.onload = function() {
+                            img.src = img.dataset.lazy;
+                            img.style.display = 'block';
+                            img.classList.add('loaded');
+                            
+                            if (placeholder) {
+                                placeholder.style.display = 'none';
+                            }
+                        };
+                        
+                        tempImg.onerror = function() {
+                            if (placeholder) {
+                                placeholder.textContent = 'Image unavailable';
+                                placeholder.style.background = '#f5f5f5';
+                                placeholder.style.animation = 'none';
+                            }
+                        };
+                        
+                        tempImg.src = img.dataset.lazy;
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            });
+
+            lazyImages.forEach(img => imageObserver.observe(img));
+            lazyImagesLoaded = true;
+        }
+
+        // Throttled scroll handler for better performance
+        let ticking = false;
+        function handleScroll() {
+            if (!ticking) {
+                requestAnimationFrame(function() {
+                    const scrollY = window.pageYOffset;
+                    const documentHeight = document.body.scrollHeight;
+                    
+                    // Sticky CTA logic
+                    const stickyBtn = document.querySelector('.sticky-cta');
+                    if (scrollY > 800) {
+                        stickyBtn.style.display = 'block';
+                        stickyBtn.style.opacity = '1';
+                        stickyBtn.style.transform = 'translateY(0)';
+                    } else {
+                        stickyBtn.style.opacity = '0';
+                        stickyBtn.style.transform = 'translateY(100%)';
+                        setTimeout(() => {
+                            if (window.pageYOffset <= 800) {
+                                stickyBtn.style.display = 'none';
+                            }
+                        }, 300);
+                    }
+
+                    // Meta Pixel tracking logic
+                    if (!scrollTracked && scrollY > documentHeight * 0.75) {
+                        if (typeof fbq !== 'undefined') {
+                            fbq('track', 'ViewContent', {
+                                content_name: '7-Day Preschooler Behavior Reset',
+                                content_type: 'product'
+                            });
+                        }
+                        scrollTracked = true;
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        // Initialize everything when DOM is ready
+        function init() {
+            // Initialize lazy loading
+            if ('IntersectionObserver' in window) {
+                lazyLoadImages();
+            } else {
+                // Fallback for older browsers
+                const lazyImages = document.querySelectorAll('img[data-lazy]');
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.lazy;
+                    img.style.display = 'block';
+                    img.classList.add('loaded');
+                    const placeholder = document.getElementById('image-placeholder');
+                    if (placeholder) {
+                        placeholder.style.display = 'none';
+                    }
+                });
+            }
+
+            // Add scroll listener
+            window.addEventListener('scroll', handleScroll, { passive: true });
+        }
+
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', init);
+        } else {
+            init();
+        }
     </script>
 </body>
 </html>
