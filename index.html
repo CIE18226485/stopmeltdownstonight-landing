@@ -375,6 +375,92 @@
             opacity: 0.8;
         }
         
+        .faq-section {
+            background: linear-gradient(135deg, #FFF5F0, #FFF0E6);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border: 2px solid #FFB6C1;
+        }
+        
+        .faq-section h2 {
+            font-size: 1.4rem;
+            color: #D2691E;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .faq-item.active {
+            box-shadow: 0 4px 15px rgba(255,140,0,0.2);
+            border: 1px solid rgba(255,140,0,0.3);
+        }
+        
+        .faq-question {
+            font-weight: 700;
+            color: #8B4513;
+            font-size: 1.05rem;
+            padding: 18px 50px 18px 20px;
+            cursor: pointer;
+            position: relative;
+            user-select: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: rgba(255,248,220,0.5);
+        }
+        
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #FF8C00;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-question::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+        
+        .faq-answer {
+            color: #666;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px 20px;
+            max-height: 200px;
+        }
+        
+        /* Add a helpful emoji before each answer */
+        .faq-answer::before {
+            content: '💡 ';
+            font-size: 1.1rem;
+        }
+        
         .guarantee {
             text-align: center;
             color: #666;
@@ -383,19 +469,25 @@
             font-style: italic;
         }
         
-        /* Mobile sticky CTA */
+        /* Mobile sticky CTA - hidden initially */
+        .sticky-cta {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 12px 14px;
+            background: rgba(255,255,255,.95);
+            box-shadow: 0 -6px 20px rgba(0,0,0,.08);
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+        
         @media (max-width: 768px) {
-            .sticky-cta {
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                padding: 12px 14px;
-                background: rgba(255,255,255,.95);
-                box-shadow: 0 -6px 20px rgba(0,0,0,.08);
-                z-index: 1000;
-            }
-            
             .sticky-cta a {
                 display: block;
                 background: linear-gradient(45deg, #32CD32, #228B22);
@@ -544,11 +636,20 @@
         </section>
 
         <!-- Quick FAQs section -->
-        <section class="benefits" aria-label="Frequently asked questions">
+        <section class="faq-section" aria-label="Frequently asked questions">
             <h2>Quick FAQs</h2>
-            <div class="benefit-item"><strong>Will this work for strong-willed kids?</strong>&nbsp;Yes — the plan is designed for big feelings and power struggles.</div>
-            <div class="benefit-item"><strong>How long will it take me?</strong>&nbsp;10–15 minutes of reading per day, with simple scripts to use right away.</div>
-            <div class="benefit-item"><strong>What if it doesn't help?</strong>&nbsp;Try it for 7 days. If you don't see progress, reply to your receipt for a full refund within 30 days.</div>
+            <div class="faq-item">
+                <div class="faq-question">Will this work for strong-willed kids?</div>
+                <div class="faq-answer">Yes — the plan is designed for big feelings and power struggles.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How long will it take me?</div>
+                <div class="faq-answer">10–15 minutes of reading per day, with simple scripts to use right away.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What if it doesn't help?</div>
+                <div class="faq-answer">Try it for 7 days. If you don't see progress, reply to your receipt for a full refund within 30 days.</div>
+            </div>
         </section>
 
         <div class="trust-badges">
@@ -768,6 +869,58 @@
             
             // Add scroll listener
             window.addEventListener('scroll', handleScroll, { passive: true });
+            
+            // Show sticky CTA after scrolling 30% on mobile
+            let stickyCTAShown = false;
+            function checkStickyVisibility() {
+                if (window.innerWidth > 768) return; // Only on mobile
+                
+                const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+                const stickyElement = document.querySelector('.sticky-cta');
+                
+                if (scrollPercent > 30 && !stickyCTAShown) {
+                    stickyCTAShown = true;
+                    if (stickyElement) {
+                        stickyElement.classList.add('visible');
+                    }
+                }
+            }
+            
+            // Check sticky visibility on scroll
+            window.addEventListener('scroll', function() {
+                requestAnimationFrame(checkStickyVisibility);
+            }, { passive: true });
+            
+            // Interactive FAQ accordion
+            document.querySelectorAll('.faq-question').forEach(question => {
+                question.addEventListener('click', function() {
+                    const faqItem = this.parentElement;
+                    const wasActive = faqItem.classList.contains('active');
+                    
+                    // Close all other FAQs
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    
+                    // Toggle current FAQ
+                    if (!wasActive) {
+                        faqItem.classList.add('active');
+                        
+                        // Track FAQ interaction
+                        if (typeof fbq !== 'undefined') {
+                            fbq('trackCustom', 'FAQ_Clicked', {
+                                question: this.textContent.trim()
+                            });
+                        }
+                        if (typeof gtag !== 'undefined') {
+                            gtag('event', 'faq_interaction', {
+                                event_category: 'Engagement',
+                                event_label: this.textContent.trim()
+                            });
+                        }
+                    }
+                });
+            });
             
             // Track if user tries to leave (exit intent)
             document.addEventListener('mouseleave', function(e) {
